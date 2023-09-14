@@ -15,6 +15,7 @@ namespace PureCSharpAssignment1.Items
 
         //A HeroAttribute property that will store the type of the HeroAttribute
         public HeroAttribute HeroAttribute { get; private set; }
+        public Slot Slot { get; internal set; }
 
         //A constructor that initializes these properties.
         public Armor(ArmorType armorType, HeroAttribute armorAttribute)

@@ -1,4 +1,5 @@
 ﻿using PureCSharpAssignment1.Enums;
+using PureCSharpAssignment1.InvalidExceptions;
 using PureCSharpAssignment1.Items;
 using System;
 using System.Collections;
@@ -50,23 +51,23 @@ namespace PureCSharpAssignment1.Heros
         {
             // Check if the weapon type is valid for this hero
             if (!ValidWeaponTypes.Contains(weapon.WeaponType))
-                throw new InvalidExceptions.InvalidWeaponException("This hero cannot equip this weapon type!");
+                throw new InvalidWeaponExceptions("This hero cannot equip this weapon type!");
 
             // Equip the weapon
             Equipment[Slot.Weapon] = weapon;
         }
 
-        /*
+        
         public void EquipArmor(Armor armor)
         {
             // Check if the armor type is valid for this hero
             if (!ValidArmorTypes.Contains(armor.ArmorType))
-                throw new InvalidArmorException("This hero cannot equip this armor type!");
+                throw new InvalidArmorExceptions("This hero cannot equip this armor type!");
 
             // Equip the armor to the respective slot
             Equipment[armor.Slot] = armor;
         }
-
+        /*
         public abstract int Damage();  // To be implemented by subclasses
         public abstract HeroAttribute TotalAttributes();  // To be implemented by subclasses
         */

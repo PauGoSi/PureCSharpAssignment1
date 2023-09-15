@@ -1,27 +1,28 @@
 ﻿using PureCSharpAssignment1.Enums;
 using PureCSharpAssignment1.Heros;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PureCSharpAssignment1.Heroes
 {
     public class Swashbuckler : Hero
     {
+        // Implementation of the abstract properties from the base class
+        public override HeroAttribute BaseAttributes => new HeroAttribute(2, 6, 1);
+        public override HeroAttribute LevelUpAttributes => new HeroAttribute(1, 4, 1);
+        public override List<WeaponType> ValidWeaponTypes => new List<WeaponType> { WeaponType.DAGGERS , WeaponType.SWORDS };
+        public override List<ArmorType> ValidArmorTypes => new List<ArmorType> { ArmorType.Leather, ArmorType.Mail };
+
+        // Constructor
         public Swashbuckler(string name) : base(name)
         {
-            LevelAttributes = new HeroAttribute(2, 6, 1);
-            ValidWeaponTypes = new List<WeaponType> { WeaponType.DAGGERS, WeaponType.SWORDS };
-            ValidArmorTypes = new List<ArmorType>{ArmorType.Leather, ArmorType.Mail};
+            LevelAttributes = BaseAttributes;
         }
 
+        // Override the LevelUp method
         public override void LevelUp()
         {
-            base.LevelUp();
-            HeroAttribute levelGain = new HeroAttribute(1, 4, 1);
-            LevelAttributes += levelGain;
+            base.LevelUp(); // Call the base method to handle common leveling logic
+            LevelAttributes = LevelAttributes?.Add(LevelUpAttributes) ?? LevelUpAttributes;
         }
     }
 }

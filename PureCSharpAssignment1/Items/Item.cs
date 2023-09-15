@@ -7,14 +7,24 @@ using System.Threading.Tasks;
 
 namespace PureCSharpAssignment1.Items
 {
-    public abstract class Item
+    //using PureCSharpAssignment1.Enums;
+    using System;
+
+    namespace PureCSharpAssignment1.Items
     {
-        protected string Name { get; set; }
-        protected int RequiredLevel { get; set; }  // All heroes start at level 1
-        /*public Item(string Name, int RequiredLevel, Slot Slot) 
+        public abstract class Item
         {
-            RequiredLevel = Level;
+            public string Name { get; protected set; }  // Because we might want to retrieve the Name elsewhere.
+            public int RequiredLevel { get; protected set; }
+            public Slot Slot { get; protected set; }
+
+            protected Item(string name, int requiredLevel, Slot slot)
+            {
+                Name = name;
+                RequiredLevel = requiredLevel;
+                Slot = slot;
+            }
         }
-        */
     }
+
 }

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace PureCSharpAssignment1.InvalidExceptions
 {
-    public class InvalidWeaponExceptions : Exception
+    public class InvalidWeaponException : Exception
     {
-        public InvalidWeaponExceptions() { }
-        public InvalidWeaponExceptions(string message) : base(message) { }
+        public InvalidWeaponException() : base() { }
 
+        public InvalidWeaponException(string message) : base(message) { }
+
+        public InvalidWeaponException(string message, Exception inner) : base(message, inner) { }
     }
 }

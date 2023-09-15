@@ -1,20 +1,21 @@
 ﻿using PureCSharpAssignment1.Enums;
+using PureCSharpAssignment1.Items.PureCSharpAssignment1.Items;
 
 namespace PureCSharpAssignment1.Items
 {
     public class Weapon : Item
     {
-        //A WeaponType property that will store the type of the weapon.
-        public WeaponType WeaponType { get; set; }
+        public Slot Slot { get; set; }
 
-        //A Damage property that will store the damage value of the weapon.
-        public int WeaponDamage { get; set; } // Weapons will have a damage value
+        public WeaponType WeaponType { get; private set; }
+        public int WeaponDamage { get; private set; }
 
-        //A constructor that initializes these properties.
-        public Weapon(WeaponType weaponType, int weaponDamage)
+        public Weapon(string name, int requiredLevel, WeaponType weaponType, int weaponDamage)
+            : base(name, requiredLevel, Slot.Weapon)  // Calling the base constructor
         {
             WeaponType = weaponType;
             WeaponDamage = weaponDamage;
         }
     }
+
 }

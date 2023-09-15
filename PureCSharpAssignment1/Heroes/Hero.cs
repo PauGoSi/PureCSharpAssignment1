@@ -1,4 +1,5 @@
 ﻿using PureCSharpAssignment1.Enums;
+using PureCSharpAssignment1.Heroes;
 using PureCSharpAssignment1.InvalidExceptions;
 using PureCSharpAssignment1.Items;
 using System;
@@ -31,7 +32,7 @@ namespace PureCSharpAssignment1.Heros
         public Hero(string name)
         {
             Name = name;
-            Dictionary<Slot, Item> Equipment = new Dictionary<Slot, Item>
+            Equipment = new Dictionary<Slot, Item>
             {
                 { Slot.Weapon, null },
                 { Slot.HEAD, null },
@@ -68,15 +69,60 @@ namespace PureCSharpAssignment1.Heros
             Equipment[armor.Slot] = armor;
         }
 
-        /*
-         • Damage – damage is calculated on the fly and not stored
-         • TotalAttributes – calculated on the fly and not stored
-         • Display – details of Hero to be displayed
-         */
-        public abstract int Damage();  // Implemented by subclasses 
-        public abstract HeroAttribute TotalAttributes();  // Implemented by subclasses
 
-        public abstract String Dispay(); // Implemented by subclasses
+        public int Damage()
+        {
+            int baseDamage = Equipment.ContainsKey(Slot.Weapon) && Equipment[Slot.Weapon] is Weapon weapon
+                             ? weapon.WeaponDamage
+                             : 1;  // Default damage if no weapon equipped
+
+            // Retrieve the total attributes for the hero
+            HeroAttribute heroTotalAttributes = TotalAttributes();
+
+            // Get the damage modifier based on the hero's type
+            int damagingAttribute = 0;
+            if (this is Barbarian)
+                damagingAttribute = heroTotalAttributes.Strength;
+            else if (this is Wizard)
+                damagingAttribute = heroTotalAttributes.Intelligence;
+            else if (this is Archer || this is Swashbuckler)
+                damagingAttribute = heroTotalAttributes.Dexterity;
+
+            // Calculate the damage
+            return (int)(baseDamage * (1 + damagingAttribute / 100.0));
+        }
+
+
+
+        public HeroAttribute TotalAttributes()
+        {
+            // Assuming you have equipped armors in Equipment dictionary.
+            HeroAttribute totalAttributes = LevelAttributes;
+
+            foreach (var item in Equipment.Values)
+            {
+                if (item is Armor armor)
+                {
+                    totalAttributes += armor.HeroAttribute;
+                }
+            }
+            return totalAttributes;
+        }
+
+        
+        public virtual string Display()
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine($"Name: {Name}");
+            builder.AppendLine($"Class: {GetType().Name}");
+            builder.AppendLine($"Level: {Level}");
+            builder.AppendLine($"Total Strength: {LevelAttributes.Strength}");
+            builder.AppendLine($"Total Dexterity: {LevelAttributes.Dexterity}");
+            builder.AppendLine($"Total Intelligence: {LevelAttributes.Intelligence}");
+            builder.AppendLine($"Damage: {Damage()}");
+            return builder.ToString();
+        }
+
 
     }
 }

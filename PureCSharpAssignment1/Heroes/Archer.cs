@@ -1,4 +1,5 @@
-﻿using PureCSharpAssignment1.Heros;
+﻿using PureCSharpAssignment1.Enums;
+using PureCSharpAssignment1.Heros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,22 +12,16 @@ namespace PureCSharpAssignment1.Heroes
     {
         public Archer(string name) : base(name)
         {
-
+            LevelAttributes = new HeroAttribute(1, 7, 1);
+            ValidWeaponTypes = new List<WeaponType> { WeaponType.BOWS };
+            ValidArmorTypes = new List<ArmorType> { ArmorType.Leather, ArmorType.Mail };
         }
 
-        public override int Damage()
+        public override void LevelUp()
         {
-            throw new NotImplementedException();
-        }
-
-        public override string Dispay()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override HeroAttribute TotalAttributes()
-        {
-            throw new NotImplementedException();
+            base.LevelUp();
+            HeroAttribute levelGain = new HeroAttribute(1, 5, 1);
+            LevelAttributes += levelGain;
         }
     }
 }

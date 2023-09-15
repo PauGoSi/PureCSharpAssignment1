@@ -67,9 +67,16 @@ namespace PureCSharpAssignment1.Heros
             // Equip the armor to the respective slot
             Equipment[armor.Slot] = armor;
         }
+
         /*
-        public abstract int Damage();  // To be implemented by subclasses
-        public abstract HeroAttribute TotalAttributes();  // To be implemented by subclasses
-        */
+         • Damage – damage is calculated on the fly and not stored
+         • TotalAttributes – calculated on the fly and not stored
+         • Display – details of Hero to be displayed
+         */
+        public abstract int Damage();  // Implemented by subclasses 
+        public abstract HeroAttribute TotalAttributes();  // Implemented by subclasses
+
+        public abstract String Dispay(); // Implemented by subclasses
+
     }
 }

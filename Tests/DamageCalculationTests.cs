@@ -13,11 +13,12 @@ namespace PureCSharpAssignment1.Tests
             // Arrange
             var barbarian = new Barbarian("Conan");
 
-            // Expected damage = 1 * (1 + (5/100)) = 1.05 (rounded to nearest integer)
-            int expectedDamage = 1;
+            // Art
+            int expectedDamage = 1;// Expected damage = 1 * (1 + (5/100)) = 1.05 (rounded to nearest integer)
+            int actualDamage = barbarian.Damage();
 
             // Assert
-            Assert.Equal(expectedDamage, barbarian.Damage());
+            Assert.Equal(expectedDamage, actualDamage);
         }
 
         [Fact]
@@ -28,11 +29,12 @@ namespace PureCSharpAssignment1.Tests
             var hatchet = new Weapon("Common Hatchet", 1, WeaponType.HATCHETS, 2);
             barbarian.EquipWeapon(hatchet);
 
-            // Expected damage = 2 * (1 + (5/100)) = 2.1 (rounded to nearest integer)
-            int expectedDamage = 2;
+            // Act
+            int expectedDamage = 2;// Expected damage = 2 * (1 + (5/100)) = 2.1 (rounded to nearest integer)
+            int actualDamage = barbarian.Damage();
 
             // Assert
-            Assert.Equal(expectedDamage, barbarian.Damage());
+            Assert.Equal(expectedDamage, actualDamage);
         }
 
         [Fact]
@@ -47,11 +49,12 @@ namespace PureCSharpAssignment1.Tests
             barbarian.EquipWeapon(hatchet);
             barbarian.EquipArmor(plateArmor);
 
-            // Expected damage = 2 * (1 + ((5+1)/100)) = 2.12 (rounded to nearest integer)
-            int expectedDamage = 2;
+            // Act
+            int expectedDamage = 2;// Expected damage = 2 * (1 + ((5+1)/100)) = 2.12 (rounded to nearest integer)
+            int actualDamage = barbarian.Damage();
 
             // Assert
-            Assert.Equal(expectedDamage, barbarian.Damage());
+            Assert.Equal(expectedDamage, actualDamage);
         }
     }
 }

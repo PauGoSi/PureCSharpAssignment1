@@ -1,5 +1,5 @@
 ﻿using PureCSharpAssignment1.Enums;
-using PureCSharpAssignment1.Heros;
+using PureCSharpAssignment1.Heroes;
 using PureCSharpAssignment1.InvalidExceptions;
 using PureCSharpAssignment1.Items;
 using PureCSharpAssignment1.Items.PureCSharpAssignment1.Items;
@@ -95,7 +95,7 @@ namespace PureCSharpAssignment1.Heroes
                 weaponDamage = weapon.WeaponDamage;
             }
 
-            // Assuming you have a method to determine the damaging attribute:
+            // We have a method to determine the damaging attribute:
             int damagingAttribute = GetDamagingAttribute();
 
             return (int)Math.Round(weaponDamage * (1 + damagingAttribute / 100.0));

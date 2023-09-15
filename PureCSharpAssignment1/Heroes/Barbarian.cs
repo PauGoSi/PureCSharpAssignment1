@@ -1,5 +1,5 @@
 ﻿using PureCSharpAssignment1.Enums;
-using PureCSharpAssignment1.Heros;
+using PureCSharpAssignment1.Heroes;
 using System.Collections.Generic;
 
 namespace PureCSharpAssignment1.Heroes

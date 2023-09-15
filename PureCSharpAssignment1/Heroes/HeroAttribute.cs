@@ -1,4 +1,4 @@
-﻿namespace PureCSharpAssignment1.Heros
+﻿namespace PureCSharpAssignment1.Heroes
 {
     public class HeroAttribute
     {

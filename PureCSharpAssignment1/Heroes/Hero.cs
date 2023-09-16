@@ -2,7 +2,6 @@
 using PureCSharpAssignment1.Heroes;
 using PureCSharpAssignment1.InvalidExceptions;
 using PureCSharpAssignment1.Items;
-using PureCSharpAssignment1.Items.PureCSharpAssignment1.Items;
 using System;
 using System.Collections.Generic;
 
@@ -36,12 +35,12 @@ namespace PureCSharpAssignment1.Heroes
             }
         }
 
-        // Methods
         public virtual void LevelUp()
         {
             Level++;
-            // Increase attributes logic based on the derived hero's LevelUpAttributes.
+            LevelAttributes = LevelAttributes?.Add(LevelUpAttributes) ?? LevelUpAttributes;
         }
+
 
         public virtual void EquipWeapon(Weapon weapon)
         {
@@ -86,9 +85,9 @@ namespace PureCSharpAssignment1.Heroes
         }
 
 
-        public int Damage()
+        public double Damage()
         {
-            int weaponDamage = 1;  // default weapon damage if no weapon is equipped
+            double weaponDamage = 1.0;  // default weapon damage if no weapon is equipped
 
             if (Equipment[Slot.Weapon] is Weapon weapon)
             {
@@ -96,9 +95,10 @@ namespace PureCSharpAssignment1.Heroes
             }
 
             // We have a method to determine the damaging attribute:
-            int damagingAttribute = GetDamagingAttribute();
+            double damagingAttribute = GetDamagingAttribute();
 
-            return (int)Math.Round(weaponDamage * (1 + damagingAttribute / 100.0));
+            //return (int)Math.Round(weaponDamage * (1 + damagingAttribute / 100.0));
+            return (weaponDamage * (1 + damagingAttribute / 100.0));
         }
 
         public string Display()
@@ -114,23 +114,7 @@ namespace PureCSharpAssignment1.Heroes
                    $"Damage: {Damage()}";
         }
 
-
-        private int GetDamagingAttribute()
-        {
-            HeroAttribute totalAttributes = TotalAttributes();
-            switch (this)
-            {
-                case Barbarian _:
-                    return totalAttributes.Strength;
-                case Wizard _:
-                    return totalAttributes.Intelligence;
-                case Archer _:
-                case Swashbuckler _:
-                    return totalAttributes.Dexterity;
-                default:
-                    throw new InvalidOperationException("Unknown hero type.");
-            }
-        }
-
+        protected abstract int GetDamagingAttribute();
+        
     }
 }

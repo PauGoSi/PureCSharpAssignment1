@@ -8,10 +8,10 @@ namespace PureCSharpAssignment1.InvalidExceptions
 {
     public class InvalidWeaponException : Exception
     {
-        public InvalidWeaponException() : base() { }
+        //public InvalidWeaponException() : base() { }
 
         public InvalidWeaponException(string message) : base(message) { }
 
-        public InvalidWeaponException(string message, Exception inner) : base(message, inner) { }
+        //public InvalidWeaponException(string message, Exception inner) : base(message, inner) { }
     }
 }

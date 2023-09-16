@@ -9,7 +9,7 @@ namespace PureCSharpAssignment1.Heroes
         // Implementation of the abstract properties from the base class
         public override HeroAttribute BaseAttributes => new HeroAttribute(5, 2, 1);
         public override HeroAttribute LevelUpAttributes => new HeroAttribute(3, 2, 1);
-        public override List<WeaponType> ValidWeaponTypes => new List<WeaponType> { WeaponType.HATCHETS , WeaponType.MACES , WeaponType.SWORDS };
+        public override List<WeaponType> ValidWeaponTypes => new List<WeaponType> { WeaponType.Hatchets , WeaponType.Maces , WeaponType.Swords };
         public override List<ArmorType> ValidArmorTypes => new List<ArmorType> { ArmorType.Mail, ArmorType.Plate };
 
         // Constructor
@@ -18,11 +18,10 @@ namespace PureCSharpAssignment1.Heroes
             LevelAttributes = BaseAttributes;
         }
 
-        // Override the LevelUp method
-        public override void LevelUp()
+        protected override int GetDamagingAttribute()
         {
-            base.LevelUp(); // Call the base method to handle common leveling logic
-            LevelAttributes = LevelAttributes?.Add(LevelUpAttributes) ?? LevelUpAttributes;
+            return TotalAttributes().Strength;  // For Barbarian
         }
+
     }
 }

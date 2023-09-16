@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace PureCSharpAssignment1.Enums
 {
+    
     public enum WeaponType
     {
-        HATCHETS,
-        BOWS,
-        DAGGERS,
-        MACES,
-        STAFFS,
-        SWORDS,
-        WANDS
+        Hatchets,
+        Bows,
+        Daggers,
+        Maces,
+        Staffs,
+        Swords,
+        Wands
     }
+
 }

@@ -17,7 +17,7 @@ namespace PureCSharpAssignment1.Items
         public HeroAttribute ArmorAttribute { get; private set; }
 
         public Armor(string name, int requiredLevel, Slot slot, ArmorType armorType, HeroAttribute armorAttribute)
-            : base(name, requiredLevel, slot)  // Calling the base constructor
+            : base(name, requiredLevel, Slot.Body)  // Calling the base constructor
         {
             ArmorType = armorType;
             ArmorAttribute = armorAttribute;

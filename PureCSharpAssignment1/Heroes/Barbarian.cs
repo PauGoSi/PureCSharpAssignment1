@@ -1,24 +1,22 @@
 ﻿using PureCSharpAssignment1.Enums;
-using PureCSharpAssignment1.Heroes;
 using System.Collections.Generic;
 
 namespace PureCSharpAssignment1.Heroes
 {
+    /// <summary>
+    /// The only unique implementation in the Barbarian class is the GetDamagingAttribute method, 
+    /// which determines which attribute (in this case, Strength) is used to calculate damage 
+    /// for that particular hero subclass. 
+    /// </summary>
     public class Barbarian : Hero
     {
-        // Implementation of the abstract properties from the base class
-        public override HeroAttribute BaseAttributes => new HeroAttribute(5, 2, 1);
-        public override HeroAttribute LevelUpAttributes => new HeroAttribute(3, 2, 1);
-        public override List<WeaponType> ValidWeaponTypes => new List<WeaponType> { WeaponType.Hatchets , WeaponType.Maces , WeaponType.Swords };
-        public override List<ArmorType> ValidArmorTypes => new List<ArmorType> { ArmorType.Mail, ArmorType.Plate };
-
         // Constructor
-        public Barbarian(string name) : base(name) {}
+        public Barbarian(string name) : base(name) { }
 
         protected override int GetDamagingAttribute()
         {
-            return TotalAttributes().Strength;  // For Barbarian
+            // For Wizard, damage attribute is Strength
+            return TotalAttributes().Strength;
         }
-
     }
 }

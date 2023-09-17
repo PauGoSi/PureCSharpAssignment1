@@ -1,9 +1,15 @@
 ﻿using PureCSharpAssignment1.Enums;
-using PureCSharpAssignment1.Heroes;
 using PureCSharpAssignment1.InvalidExceptions;
 using PureCSharpAssignment1.Items;
-using System;
-using System.Collections.Generic;
+
+/// <summary>
+/// The Hero class and its derived classes (Wizard, Archer, etc.) primarily have the responsibility of 
+/// representing a hero and its core behaviors. If there's a reason to change these classes, it would 
+/// be because the core behavior or characteristics of a hero or a specific type of hero changes.
+/// 
+/// All heroes share the same set of attributes and methods defined in the base Hero class. 
+/// No derived class introduces a new attribute or method that would break the Liskov Substitution Principle.
+/// </summary>
 
 namespace PureCSharpAssignment1.Heroes
 {
@@ -12,20 +18,23 @@ namespace PureCSharpAssignment1.Heroes
         // Properties and fields
         public string Name { get; private set; }
         public int Level { get; private set; } = 1;
-        public abstract HeroAttribute BaseAttributes { get; }
-        public HeroAttribute LevelAttributes { get; set; }
 
-        public abstract HeroAttribute LevelUpAttributes { get; }
+        // These are no longer abstract properties as they will be retrieved from HeroConfiguration
+        public HeroAttribute BaseAttributes => HeroConfiguration.GetBaseAttributes(GetType().Name);
+        public HeroAttribute LevelAttributes { get; set; }
+        public HeroAttribute LevelUpAttributes => HeroConfiguration.GetLevelUpAttributes(GetType().Name);
+
+        public List<WeaponType> ValidWeaponTypes => HeroConfiguration.GetValidWeaponTypes(GetType().Name);
+        public List<ArmorType> ValidArmorTypes => HeroConfiguration.GetValidArmorTypes(GetType().Name);
+
         public Dictionary<Slot, Item> Equipment { get; private set; } = new Dictionary<Slot, Item>();
-        public abstract List<WeaponType> ValidWeaponTypes { get; }
-        public abstract List<ArmorType> ValidArmorTypes { get; }
 
         // Constructor
         protected Hero(string name)
         {
             Name = name;
-            InitializeEquipmentSlots();
             LevelAttributes = BaseAttributes;
+            InitializeEquipmentSlots();
         }
 
         private void InitializeEquipmentSlots()
@@ -39,9 +48,8 @@ namespace PureCSharpAssignment1.Heroes
         public virtual void LevelUp()
         {
             Level++;
-            LevelAttributes = LevelAttributes?.Add(LevelUpAttributes) ?? LevelUpAttributes;
+            LevelAttributes = LevelAttributes.Add(LevelUpAttributes);
         }
-
 
         public virtual void EquipWeapon(Weapon weapon)
         {
@@ -71,8 +79,7 @@ namespace PureCSharpAssignment1.Heroes
 
         public HeroAttribute TotalAttributes()
         {
-            // Start with LevelAttributes. If it's null, initialize with zeros.
-            HeroAttribute totalAttributes = LevelAttributes ?? new HeroAttribute(0, 0, 0);
+            HeroAttribute totalAttributes = LevelAttributes;
 
             foreach (var equipment in Equipment.Values)
             {
@@ -85,21 +92,17 @@ namespace PureCSharpAssignment1.Heroes
             return totalAttributes;
         }
 
-
         public double Damage()
         {
-            double weaponDamage = 1.0;  // default weapon damage if no weapon is equipped
+            double weaponDamage = 1.0;
 
             if (Equipment[Slot.Weapon] is Weapon weapon)
             {
                 weaponDamage = weapon.WeaponDamage;
             }
 
-            // We have a method to determine the damaging attribute:
             double damagingAttribute = GetDamagingAttribute();
-
-            //return (int)Math.Round(weaponDamage * (1 + damagingAttribute / 100.0));
-            return (weaponDamage * (1 + damagingAttribute / 100.0));
+            return weaponDamage * (1 + damagingAttribute / 100.0);
         }
 
         public string Display()
@@ -116,6 +119,5 @@ namespace PureCSharpAssignment1.Heroes
         }
 
         protected abstract int GetDamagingAttribute();
-        
     }
 }

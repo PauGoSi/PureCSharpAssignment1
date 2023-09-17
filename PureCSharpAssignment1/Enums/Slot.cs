@@ -9,7 +9,7 @@ namespace PureCSharpAssignment1.Enums
     public enum Slot
     {
         Weapon,
-        HEAD,
+        Head,
         Body,
         Legs
     }

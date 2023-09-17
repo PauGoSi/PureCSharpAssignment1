@@ -13,10 +13,7 @@ namespace PureCSharpAssignment1.Heroes
         public override List<ArmorType> ValidArmorTypes => new List<ArmorType> { ArmorType.Cloth };
 
         // Constructor
-        public Wizard(string name) : base(name)
-        {
-            LevelAttributes = BaseAttributes;
-        }
+        public Wizard(string name) : base(name) {}
         protected override int GetDamagingAttribute()
         {
             return TotalAttributes().Intelligence;  // For Wizard

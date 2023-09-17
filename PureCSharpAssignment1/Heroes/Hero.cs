@@ -25,6 +25,7 @@ namespace PureCSharpAssignment1.Heroes
         {
             Name = name;
             InitializeEquipmentSlots();
+            LevelAttributes = BaseAttributes;
         }
 
         private void InitializeEquipmentSlots()

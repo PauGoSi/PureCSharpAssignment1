@@ -13,10 +13,7 @@ namespace PureCSharpAssignment1.Heroes
         public override List<ArmorType> ValidArmorTypes => new List<ArmorType> { ArmorType.Leather, ArmorType.Mail };
 
         // Constructor
-        public Archer(string name) : base(name)
-        {
-            LevelAttributes = BaseAttributes;
-        }
+        public Archer(string name) : base(name) {}
 
         protected override int GetDamagingAttribute()
         {

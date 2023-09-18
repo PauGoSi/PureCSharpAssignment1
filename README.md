@@ -11,6 +11,7 @@ The output in the console is a overview of all detail for the selected Hero`s
 * Total dexterity
 * Total intelligence
 * Damage
+
 only for the first 2 states. Try and play around with my console app.
 
 ## Install

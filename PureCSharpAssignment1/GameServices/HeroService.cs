@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace PureCSharpAssignment1.GameServices
 {
+    /// <summary>
+    /// The HeroService class has one single responsibility: 
+    /// to validate all user input related to weapon and armor
+    /// </summary>
     public class HeroService
     {
         public void EquipWeaponToHero(Hero hero)

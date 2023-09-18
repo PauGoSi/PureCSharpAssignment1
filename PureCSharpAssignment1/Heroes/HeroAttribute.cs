@@ -1,5 +1,12 @@
-﻿namespace PureCSharpAssignment1.Heroes
+﻿using System.Buffers.Text;
+using System.Threading;
+
+namespace PureCSharpAssignment1.Heroes
 {
+    /// <summary>
+    /// The Hero attribute class has one single responsibility:
+    //  to add two instances together and return the sum.
+    /// </summary>
     public class HeroAttribute
     {
         public int Strength { get; set; }

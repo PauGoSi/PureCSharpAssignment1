@@ -34,6 +34,7 @@ internal class Program
             Console.WriteLine("Choose a hero (Barbarian, Wizard, Archer, Swashbuckler):");
             string chosenHeroType = Console.ReadLine();
 
+            // A switch statement that takes care of the chosen hero the user has selected.
             switch (chosenHeroType.ToLower())
             {
                 case "barbarian":

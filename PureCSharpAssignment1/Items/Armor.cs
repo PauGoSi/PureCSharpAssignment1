@@ -17,11 +17,16 @@ namespace PureCSharpAssignment1.Items
         public HeroAttribute ArmorAttribute { get; private set; }
 
         public Armor(string name, int requiredLevel, Slot slot, ArmorType armorType, HeroAttribute armorAttribute)
-            : base(name, requiredLevel, Slot.Body)  // Calling the base constructor
+    :   base(name, requiredLevel, slot)  // Calling the base constructor with the correct slot parameter
         {
+            Console.WriteLine($"Inside Armor Constructor: {slot}");  // Debugging line
+            Name = name;
+            RequiredLevel = requiredLevel;
+            Slot = slot;
             ArmorType = armorType;
             ArmorAttribute = armorAttribute;
         }
+
     }
 
 }

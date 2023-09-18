@@ -4,7 +4,7 @@ using PureCSharpAssignment1.InvalidExceptions;
 using PureCSharpAssignment1.Items;
 using Xunit;
 
-namespace Tests
+namespace OverviewTests
 {
     public class HeroTests
     {
@@ -361,5 +361,22 @@ namespace Tests
             Assert.Equal(expectedDamage, actualDamage);
         }
         // Maybe if time, similar tests for other heroes, like Wizard, Barbarian, and Swashbuckler.
+    }
+    
+    public class FreshArmorTests
+    {
+        [Fact]
+        public void Fresh_Armor_Slot_ShouldBe_Body()
+        {
+            // Arrange
+            var armor = new Armor("FreshTestArmor", 1, Slot.Body, ArmorType.Leather, new HeroAttribute(1, 1, 1));
+            
+
+            // Act
+            var actualSlot = armor.Slot;
+
+            // Assert
+            Assert.Equal(Slot.Body, actualSlot);
+        }
     }
 }

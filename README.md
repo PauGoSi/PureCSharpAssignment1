@@ -1,4 +1,4 @@
-## Contributors
+## Contributor
 * Pau Go Si (paugosi@hotmail.com)
 
 # C# console application

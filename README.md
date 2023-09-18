@@ -14,6 +14,6 @@ The output in the console is a overview of all detail for the selected Hero`s
 
 only for the first 2 states. Try and play around with my console app.
 
-## Install
+## Set up
 To run the C# code on local machine you will need installed at least the following tools:
 * Visual Studio with .NET 6

@@ -1,2 +1,18 @@
 ## Contributors
 * Pau Go Si (paugosi@hotmail.com)
+
+# PokemonTrainerApp
+A plain C# console application which gives the user to choose a Hero and their weapon and amor.
+The output in the console is a overview of all detail for the selected Hero`s
+* Name
+* Class
+* Level
+* Total strength
+* Total dexterity
+* Total intelligence
+* Damage
+only for the first 2 states. Try and play around with my console app.
+
+## Install
+To run the C# code on local machine you will need installed at least the following tools:
+* Visual Studio with .NET 6

@@ -1,7 +1,7 @@
 ## Contributors
 * Pau Go Si (paugosi@hotmail.com)
 
-# PokemonTrainerApp
+# C# console application
 This plain C# console application requied the user to type a valid Hero (Wizard, Archer, Swashbuckler or Swashbuckler) and their weapon and amor.
 The output in the console is a overview of all detail for the selected Hero`s
 * Name

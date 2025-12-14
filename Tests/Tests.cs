@@ -17,7 +17,7 @@ namespace OverviewTests
             var wizard = new Wizard("TestWizard");
 
             // Act
-            var ActualName = wizard.Name;
+            string ActualName = wizard.Name;
             int ActualLevel = wizard.Level;
             int ActualStrength = wizard.TotalAttributes().Strength;
             int ActualDexterity = wizard.TotalAttributes().Dexterity;
@@ -38,7 +38,7 @@ namespace OverviewTests
             var archer = new Archer("TestArcher");
 
             // Act
-            var ActualName = archer.Name;
+            string ActualName = archer.Name;
             int ActualLevel = archer.Level;
             int ActualStrength = archer.TotalAttributes().Strength;
             int ActualDexterity = archer.TotalAttributes().Dexterity;
@@ -59,7 +59,7 @@ namespace OverviewTests
             var swashbuckler = new Swashbuckler("TestSwashbuckler");
 
             // Act
-            var ActualName = swashbuckler.Name;
+            string ActualName = swashbuckler.Name;
             int ActualLevel = swashbuckler.Level;
             int ActualStrength = swashbuckler.TotalAttributes().Strength;
             int ActualDexterity = swashbuckler.TotalAttributes().Dexterity;
@@ -80,7 +80,7 @@ namespace OverviewTests
             var barbarian = new Barbarian("TestBarbarian");
 
             // Act
-            var ActualName = barbarian.Name;
+            string ActualName = barbarian.Name;
             int ActualLevel = barbarian.Level;
             int ActualStrength = barbarian.TotalAttributes().Strength;
             int ActualDexterity = barbarian.TotalAttributes().Dexterity;
@@ -186,11 +186,11 @@ namespace OverviewTests
             var weapon = new Weapon("TestWeapon", 1, WeaponType.Bows, 10);
 
             // Act
-            var ActualWeaponName = weapon.Name;
-            var ActualRequiredLevel = weapon.RequiredLevel;
-            var ActualSlot = weapon.Slot;
-            var ActualWeaponType = weapon.WeaponType;
-            var ActualWeaponDamage = weapon.WeaponDamage;
+            string ActualWeaponName = weapon.Name;
+            int ActualRequiredLevel = weapon.RequiredLevel;
+            Enum ActualSlot = weapon.Slot;
+            Enum ActualWeaponType = weapon.WeaponType;
+            int ActualWeaponDamage = weapon.WeaponDamage;
 
             // Assert
             Assert.Equal("TestWeapon", ActualWeaponName);
@@ -208,10 +208,10 @@ namespace OverviewTests
             var armor = new Armor("TestArmor", 1, Slot.Body, ArmorType.Leather, new HeroAttribute(1, 1, 1));
 
             // Act
-            var ActualArmorName = armor.Name;
-            var ActualRequiredLevel = armor.RequiredLevel;
-            var ActualSlot = armor.Slot;
-            var ActualArmorType = armor.ArmorType;
+            string ActualArmorName = armor.Name;
+            int ActualRequiredLevel = armor.RequiredLevel;
+            Enum ActualSlot = armor.Slot;
+            Enum ActualArmorType = armor.ArmorType;
 
             // Assert
             Assert.Equal("TestArmor", ActualArmorName);
@@ -373,7 +373,7 @@ namespace OverviewTests
             
 
             // Act
-            var actualSlot = armor.Slot;
+            Enum actualSlot = armor.Slot;
 
             // Assert
             Assert.Equal(Slot.Body, actualSlot);
